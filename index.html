@@ -551,6 +551,41 @@
     .skill-row-full:last-child { border-bottom: none; }
 
     /* ────────────────────────────────────────────────────────────────
+       CERTIFICATIONS
+    ──────────────────────────────────────────────────────────────── */
+    .cert-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    }
+    @media (max-width: 700px) { .cert-grid { grid-template-columns: 1fr; } }
+    .cert-card {
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: var(--r-xl); overflow: hidden;
+      box-shadow: var(--shadow-sm); transition: box-shadow 0.25s, transform 0.25s;
+      display: flex; flex-direction: column;
+    }
+    .cert-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+    .cert-badge-wrap {
+      display: flex; align-items: center; justify-content: center;
+      padding: 32px 24px 24px; min-height: 180px;
+    }
+    .cert-badge-img {
+      max-width: 220px; max-height: 140px; width: auto; height: auto;
+      border-radius: 10px; object-fit: contain;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+    }
+    .cert-body { padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 8px; }
+    .cert-issuer { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; display: flex; align-items: center; }
+    .cert-name { font-size: 17px; font-weight: 700; color: var(--text); line-height: 1.35; }
+    .cert-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+    .cert-meta span:first-child { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
+    .cert-skill-tag {
+      font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 100px;
+      background: rgba(192,86,33,0.1); color: var(--accent);
+      border: 1px solid rgba(192,86,33,0.25); letter-spacing: 0.03em;
+    }
+    .cert-id { font-size: 10px; color: var(--text-muted); font-family: monospace; letter-spacing: 0.04em; margin-top: 2px; }
+
+    /* ────────────────────────────────────────────────────────────────
        EDUCATION
     ──────────────────────────────────────────────────────────────── */
     #education { background: var(--bg-alt); }
@@ -880,7 +915,7 @@
               <a class="btn-secondary" href="https://www.linkedin.com/in/noamchocron" target="_blank" rel="noopener noreferrer">
                 <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
               </a>
-              <a class="btn-secondary" href="https://github.com/noamchocron" target="_blank" rel="noopener noreferrer">
+              <a class="btn-secondary" href="https://github.com/noamchocron-coding" target="_blank" rel="noopener noreferrer">
                 <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
               </a>
             </div>
@@ -938,8 +973,8 @@
               <a class="about-link" href="https://www.linkedin.com/in/noamchocron" target="_blank" rel="noopener noreferrer">
                 <i class="fa-brands fa-linkedin" aria-hidden="true"></i> linkedin.com/in/noamchocron
               </a>
-              <a class="about-link" href="https://github.com/noamchocron" target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-github" aria-hidden="true"></i> github.com/noamchocron
+              <a class="about-link" href="https://github.com/noamchocron-coding" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github" aria-hidden="true"></i> github.com/noamchocron-coding
               </a>
               <a class="about-link" href="mailto:noamchocron@gmail.com">
                 <i class="fa-regular fa-envelope" aria-hidden="true"></i> noamchocron@gmail.com
@@ -948,23 +983,20 @@
           </div>
 
           <div class="about-bento reveal reveal-d2" aria-hidden="true">
-            <div class="bento-tile bento-tile-a">
-              <img src="casual.png" alt="Noam at a professional event" loading="lazy" />
-              <div class="bento-tile-a-overlay">
-                <span class="bento-tile-a-label">Duke University, 2021-2025</span>
-              </div>
+            <div class="bento-tile bento-tile-a" style="background:#0a1e5e; display:flex; align-items:center; justify-content:center; padding:28px;">
+              <img src="duke.jpg" alt="Duke University seal" loading="lazy" style="width:160px; height:160px; object-fit:contain; border-radius:50%;" />
             </div>
             <div class="bento-tile bento-tile-b">
-              <div class="bento-b-icon"><i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i></div>
+              <div class="bento-b-icon"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
               <div>
-                <div class="bento-b-title">GTM Research</div>
-                <div class="bento-b-sub">15+ U.S. regional analyses, 50+ targets</div>
+                <div class="bento-b-title">Dual Degree</div>
+                <div class="bento-b-sub">B.S. Computer Science &amp; Economics — Class of 2025</div>
               </div>
             </div>
             <div class="bento-tile bento-tile-c">
               <div>
-                <div class="bento-c-num">10<span class="bento-c-unit">+</span></div>
-                <div class="bento-c-desc">User workshops &amp; interviews conducted</div>
+                <div class="bento-c-num" style="font-size:1.5rem; letter-spacing:-0.02em;">PM +<br/>ML</div>
+                <div class="bento-c-desc">Coursework spanning Product Management and Machine Learning for Business</div>
               </div>
             </div>
           </div>
@@ -1213,6 +1245,86 @@
             </div>
           </div>
         </article>
+
+        <!-- ── KOUNSLR ──────────────────────────────────────────────
+          Facts:
+          1. No files import this HTML — it is a standalone single-page site
+          2. Adds new proj-card article; existing toggleExtra() JS function handles expand/collapse
+          3. No data files read/written — static HTML only
+          4. User instruction: "add another project I did for my product management class [...] leading a team [...] user cases, updated website format, MVPs [...] B2B approaches to schools [...] AI component. [...] 2 month period"
+        -->
+        <article class="proj-card proj-card-featured reveal" style="margin-top:20px">
+          <div class="proj-card-img" style="background:linear-gradient(145deg,#0b5e63 0%,#0d7377 45%,#14a085 100%);display:flex;align-items:center;justify-content:center;padding:28px;overflow:hidden;position:relative;">
+            <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.08" xmlns="http://www.w3.org/2000/svg">
+              <defs><pattern id="pg" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0L0 0 0 32" fill="none" stroke="white" stroke-width="0.7"/></pattern></defs>
+              <rect width="100%" height="100%" fill="url(#pg)"/>
+            </svg>
+            <div style="background:#fff;border-radius:12px;width:260px;box-shadow:0 8px 32px rgba(0,0,0,0.22);overflow:hidden;position:relative;z-index:1;flex-shrink:0">
+              <div style="background:linear-gradient(135deg,#0d7377,#14a085);padding:16px 16px 12px;display:flex;align-items:center;gap:12px">
+                <div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.25);border:2px solid rgba(255,255,255,0.5);display:flex;align-items:center;justify-content:center;font-size:20px">👩</div>
+                <div>
+                  <div style="color:#fff;font-weight:700;font-size:13px;line-height:1.2">Jenny Schwartz, 26</div>
+                  <div style="color:rgba(255,255,255,0.8);font-size:10px">School Counselor</div>
+                </div>
+              </div>
+              <div style="padding:10px 12px;display:flex;flex-direction:column;gap:6px">
+                <div style="font-size:9px;font-weight:700;color:#0d7377;text-transform:uppercase;letter-spacing:.08em">Goals</div>
+                <div style="background:#fffde7;border-radius:4px;padding:5px 8px;font-size:8px;color:#333;line-height:1.4"><strong>Track academic progress</strong> — monitor interventions effectively</div>
+                <div style="display:flex;gap:5px;margin-top:2px">
+                  <span style="background:#0d7377;color:#fff;border-radius:100px;padding:2px 7px;font-size:8px">Calm</span>
+                  <span style="background:#14a085;color:#fff;border-radius:100px;padding:2px 7px;font-size:8px">Analytical</span>
+                  <span style="background:#32de8a;color:#0b5e63;border-radius:100px;padding:2px 7px;font-size:8px">Caring</span>
+                </div>
+              </div>
+            </div>
+            <div style="position:absolute;top:18px;right:18px;display:flex;flex-direction:column;gap:8px;z-index:1">
+              <div style="background:rgba(255,255,255,0.15);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.25);border-radius:8px;padding:7px 12px;color:#fff;font-size:10px;font-weight:600">3 Personas Built</div>
+              <div style="background:rgba(255,255,255,0.15);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.25);border-radius:8px;padding:7px 12px;color:#fff;font-size:10px;font-weight:600">B2B GTM Strategy</div>
+              <div style="background:rgba(255,255,255,0.15);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.25);border-radius:8px;padding:7px 12px;color:#fff;font-size:10px;font-weight:600">AI Roadmap Delivered</div>
+            </div>
+          </div>
+          <div class="proj-card-body">
+            <div class="proj-icon" style="background:rgba(13,115,119,0.1)">
+              <i class="fa-solid fa-users-gear" style="color:#0d7377" aria-hidden="true"></i>
+            </div>
+            <h3 class="proj-title">Kounslr — Product Strategy &amp; Platform Redesign</h3>
+            <p class="proj-desc">Led a cross-functional PM team through a 2-month product strategy engagement for Kounslr, a school counseling SaaS platform — delivering user research, feature prioritization, a B2B school district go-to-market strategy, and a phased AI integration roadmap.</p>
+            <div class="proj-extra" id="extra-kounslr">
+              <p><strong>Context:</strong> Kounslr is a college-prep platform helping high school students organize their academic journey, extracurriculars, and applications. As team lead in a Duke product management course, I directed a cross-functional team of 5 through a 2-month engagement to identify platform gaps, surface user pain points, and deliver a concrete product strategy with B2B business justification — working directly against the platform's live product.</p>
+
+              <p><strong>Primary Research — Survey of 59 Duke Undergrads:</strong> Administered a structured product attribute survey to 59 Duke undergraduate students who had personal experience with high school counseling and the college application process. Rated the product across 9 attributes (Delight, Trust, Viability, Clarity, Speed, Ethical, Differentiation, Quality, Usability). Three critical pain points emerged: <strong>Delight</strong> — 66% scored 3 or below ("it felt more of a chore… the college process is hard and stressful"); <strong>Trust</strong> — 79% scored 3 or below ("if it were messages from my counselor or someone with a name and a face, it could have been more trustworthy"); <strong>Viability</strong> — 74% scored 3 or below ("it is not clear how value accrues to the developers of Kounslr"). Results visualized in an interactive Tableau dashboard showing attribute distributions by rating tier.</p>
+
+              <p><strong>User Personas &amp; SWOT Analysis:</strong> Built a detailed school counselor persona — "Jenny Schwartz, 26" — a Berkeley High School counselor with 10 years of experience managing high student-to-counselor ratios. Goals: track academic progress, enable efficient student meetings, improve communication with parents. Key objection: concern the app would replace rather than augment in-person counseling. SWOT analysis identified competitors Naviance and Skyward as key threats; AI-powered meeting recap (via Zoom-style recording) and calendar integrations (Google, iCal, Outlook) as primary opportunities.</p>
+
+              <p><strong>Core MVP Proposal — College Counselor Account:</strong> The team's primary recommendation was a new account type giving school counselors direct access to their students' Kounslr profiles. This addressed all 3 pain points simultaneously: (1) bridging the student-counselor communication gap to improve in-person session quality and efficiency; (2) building trust by routing platform credibility through school districts and counselors students already know; (3) creating the B2B revenue model Kounslr needed to become financially viable. Counselors could track caseloads asynchronously, log meeting notes, and review student progress — freeing synchronous time for personalized guidance rather than catch-up.</p>
+
+              <p><strong>B2B Go-to-Market Strategy:</strong> Proposed a direct B2B motion targeting school systems and college counseling agencies rather than individual families. Key milestone: first school district client, where each high school class could onboard multiple counselors and hundreds of students at the start of a fall semester. Outlined a subscription model requiring sustained counselor adoption and identified institutional inertia (slow platform switching cycles, school-wide account complexity) as the primary churn risk to manage. Success metrics: DAU/WAU rates, session duration, data entry frequency, and pre-meeting surveys for both students and counselors.</p>
+
+              <p><strong>AI Integration Roadmap:</strong> Designed a phased AI roadmap grounded in the survey findings — Phase 1: auto-summarize student history before counselor meetings, reducing prep time and directly addressing the trust gap; Phase 2: AI-powered "Brag Sheet" generating a personalized college application resume from the student's logged activities, test scores, and journal entries (the #1 most-requested feature across all 59 reviewers); Phase 3: college fit prediction using student GPA, extracurriculars, and goals to classify schools as reach/target/safety — replacing manual categorization. Each phase scoped with adoption milestones and flagged ethical risks (data accuracy, AI inflation of accomplishments).</p>
+
+              <a class="proj-article-link" href="https://public.tableau.com/app/profile/karen.dong/viz/KounslrProductAttributeScoring/Dashboard1?publish=yes" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-chart-bar" aria-hidden="true"></i>
+                View our interactive Tableau attribute-scoring dashboard
+              </a>
+              <a class="proj-article-link" href="https://kounslr.com/" target="_blank" rel="noopener noreferrer" style="margin-top:8px">
+                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                Visit Kounslr's current platform
+              </a>
+            </div>
+            <button class="btn-expand" onclick="toggleExtra('extra-kounslr', this)" aria-expanded="false">
+              <span>Show details</span>
+              <i class="fa-solid fa-chevron-down btn-expand-icon" aria-hidden="true"></i>
+            </button>
+            <div class="proj-stack" style="margin-top:14px">
+              <span class="stack-tag" style="background:rgba(13,115,119,0.1);color:#0d7377;border-color:rgba(13,115,119,0.2)">Product Strategy</span>
+              <span class="stack-tag warm">User Research</span>
+              <span class="stack-tag muted">B2B GTM</span>
+              <span class="stack-tag muted">AI Roadmap</span>
+              <span class="stack-tag muted">Team Lead · 2 Months</span>
+            </div>
+          </div>
+        </article>
+
       </div>
     </section>
 
@@ -1320,6 +1432,54 @@
       </div>
     </section>
 
+    <!-- ── CERTIFICATIONS ────────────────────────────────────────── -->
+    <section id="certifications" class="section" aria-labelledby="cert-heading" style="background:var(--bg)">
+      <div class="container">
+        <h2 class="section-title reveal" id="cert-heading">Certifications</h2>
+        <div class="cert-grid">
+
+          <!-- Claude Academy -->
+          <div class="cert-card reveal">
+            <div class="cert-badge-wrap" style="background:linear-gradient(135deg,#f5ece4 0%,#ede0d4 100%)">
+              <img src="cert-claude-academy.png" alt="Claude Academy AI Fluency badge" class="cert-badge-img">
+            </div>
+            <div class="cert-body">
+              <div class="cert-issuer" style="color:#C05621">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="vertical-align:-2px;margin-right:5px"><circle cx="12" cy="12" r="10" stroke="#C05621" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#C05621" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Anthropic · Claude Academy
+              </div>
+              <div class="cert-name">AI Fluency: Framework and Foundations</div>
+              <div class="cert-meta">
+                <span><i class="fa-regular fa-calendar" aria-hidden="true"></i> Issued Nov 2026</span>
+                <span class="cert-skill-tag">AI &amp; Prompt Engineering</span>
+              </div>
+              <div class="cert-id">ID: 1abaf60c45f3f14a8ba2baec81361d1f</div>
+            </div>
+          </div>
+
+          <!-- OpenAI Academy -->
+          <div class="cert-card reveal reveal-d1">
+            <div class="cert-badge-wrap" style="background:linear-gradient(135deg,#eef0ff 0%,#dde0ff 100%)">
+              <img src="cert-openai.png" alt="OpenAI Applied AI Foundations badge" class="cert-badge-img">
+            </div>
+            <div class="cert-body">
+              <div class="cert-issuer" style="color:#5B6CF9">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="vertical-align:-2px;margin-right:5px"><circle cx="12" cy="12" r="10" stroke="#5B6CF9" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#5B6CF9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                OpenAI · OpenAI Academy
+              </div>
+              <div class="cert-name">Applied AI Foundations</div>
+              <div class="cert-meta">
+                <span><i class="fa-regular fa-calendar" aria-hidden="true"></i> Issued Sep 2026 · Expires Mar 2027</span>
+                <span class="cert-skill-tag" style="background:rgba(91,108,249,0.1);color:#5B6CF9;border-color:rgba(91,108,249,0.25)">Product Management</span>
+              </div>
+              <div class="cert-id">ID: 195206755</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <!-- ── LEADERSHIP ─────────────────────────────────────────────── -->
     <section id="leadership" class="section" aria-labelledby="leadership-heading">
       <div class="container">
@@ -1386,8 +1546,8 @@
             </a>
           </div>
           <div class="contact-links reveal">
-            <a class="contact-link" href="https://github.com/noamchocron" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github" aria-hidden="true"></i> github.com/noamchocron
+            <a class="contact-link" href="https://github.com/noamchocron-coding" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-github" aria-hidden="true"></i> github.com/noamchocron-coding
             </a>
             <a class="contact-link" href="tel:+972552680796">
               <i class="fa-solid fa-phone" aria-hidden="true"></i> +972 055-268-0796
@@ -1408,7 +1568,7 @@
         <a href="https://www.linkedin.com/in/noamchocron" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
         </a>
-        <a href="https://github.com/noamchocron" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <a href="https://github.com/noamchocron-coding" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           <i class="fa-brands fa-github" aria-hidden="true"></i>
         </a>
         <a href="mailto:noamchocron@gmail.com" aria-label="Email Noam">
